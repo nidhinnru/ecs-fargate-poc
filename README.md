@@ -31,7 +31,7 @@ A Python script has been created to setup S3 bucket, enable AES256 encryption, d
 python ./src/main.py --s3_bucket_name=dev-ingest-test --region=us-east-1
 ```
 
-Alternatively, arguments can also be configured as environment variables, it's expected run the execution as "python [./src/main.py](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/src/main.py)" after setting the environment variables.
+Alternatively, arguments can also be configured as environment variables, it's expected run the execution as "python [./src/main.py](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/src/main.py)" after setting the below environment variables.
 ```
 export S3_BUCKET_NAME=dev-ingest-test
 export AWS_REGION=us-east-1
@@ -41,7 +41,7 @@ export AWS_REGION=us-east-1
 
 A Dockerfile is placed at the root of the repo which copies python file under "src" folder into container path. Entrypoint has been configured for runtime execution.
 
-Inorder to build the dockerfile and test the docker container locally, a docker-compose file is created with the volume mount, build contexts, environment variables(read from .env file located at root of the repo)
+In-order to build the dockerfile and test the docker container locally, a docker-compose file is created with the volume mount, build contexts, environment variables(read from .env file located at root of the repo)
 
 ```console
 version: "3.9"
