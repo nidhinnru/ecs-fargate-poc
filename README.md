@@ -6,7 +6,7 @@
 * [S3 Python Script](#s3-python-script)
 * [Docker & Docker Compose](#docker-docker-compose)
 * [Terraform](#terraform)
-
+* [Notes](#notes)
 
 ### Prerequisites
 
