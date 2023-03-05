@@ -21,11 +21,10 @@
 Python script has been created to create S3 bucket, enable AES256 encryption, disable public access.
 
 Script Logic:
+	- Allows two input arguments "--s3_bucket_name" & "--region".
         - Check if the bucket already exists, else create a new bucket.
-        - Enables AES256 encryption at bucket level
-        - Disable all public access to the bucket
-
-It allows two input arguments "--s3_bucket_name" & "--region".
+        - Enables AES256 encryption at bucket level.
+        - Disable all public access to the bucket.
 
 Manual Execution:
 ```sh
@@ -40,9 +39,9 @@ AWS_REGION=us-east-1
 
 ### Docker & Docker Compose
 
-A Dockerfile is placed at the root of the repo which copies python file under "src" folder into container path. Entrypoint has been configured for runtime execution. contains [the minimum requirement](https://docs.docker.com/engine/installation/binaries/#check-kernel-dependencies) for Docker.
+A Dockerfile is placed at the root of the repo which copies python file under "src" folder into container path. Entrypoint has been configured for runtime execution.
 
-Inorder to build the dockerfile and test the docker container, a docker-compose file is created with the volume mount, build contexts, environment variables(read from .env file)
+Inorder to build the dockerfile and test the docker container locally, a docker-compose file is created with the volume mount, build contexts, environment variables(read from .env file located at root of the repo)
 
 ```console
 version: "3.9"
@@ -69,22 +68,20 @@ docker-compose down ##To remove all the resources
 
 ### Terraform
 
-Terraform modules are placed under [terraform/modules]() directory
+Terraform modules for ECR & ECS services are placed under [terraform/modules](https://github.com/nidhinnru/ecs-fargate-poc/tree/main/terraform/modules) directory
 
-If you're not willing to run a random shell script, please see the [installation](https://docs.docker.com/engine/installation/linux/) instructions for your distribution.
-
-If you are a complete Docker newbie, you should follow the [series of tutorials](https://docs.docker.com/engine/getstarted/) now.
-
-Get the server version:
-
-```console
-$ docker version --format '{{.Server.Version}}'
-1.8.0
+Terraform Commands:
+```sh
+terraform init --upgrade ##Initialize the changes
+terraform workspace new dev ##Create new workspace as per env.(e.g dev, beta, & prod)
+terraform workspace select dev ##Select the workspace
+terraform validate ##Validate the files
+terraform plan ##Review the plan
+terraform apply ##Apply the plan. 
 ```
 
-You can also dump raw JSON data:
-
-```console
-$ docker version --format '{{json .}}'
-{"Client":{"Version":"1.8.0","ApiVersion":"1.20","GitCommit":"f5bae0a","GoVersion":"go1.4.2","Os":"linux","Arch":"am"}
-```
+### Notes
+	- Terraform deployments for each environments is handled using workspace. 
+	- Script expects [environment variables](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/terraform/locals.tf#L20) to be set in ECS task definition.
+	- This use case doesn't require load balancer, autoscaling to be configured.
+	- ECS task will try to create the bucket, If the bucket already exists it will skip all the steps and task will be stopped. In either case the task will be stopped after the entrypoint execution(this is expected).
