@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  bucket_create:
+    image: bucket_create:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+        S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+        REGION: ${AWS_REGION}
+    volumes:
+      - $HOME/aws/credentials:/root/.aws/credentials
