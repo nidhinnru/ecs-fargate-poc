@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Inspiration from https://github.com/onnimonni/terraform-ecr-docker-build-module
-
 # Fail fast
 set -e
 

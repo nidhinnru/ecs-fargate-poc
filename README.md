@@ -18,7 +18,7 @@
 
 ### S3 Python Script
 
-Python script has been created to create S3 bucket, enable AES256 encryption, disable public access.
+A Python script has been written to setup S3 bucket, enable AES256 encryption, disable public access.
 
 Script Logic:
 	- Allows two input arguments "--s3_bucket_name" & "--region".
@@ -82,6 +82,7 @@ terraform apply ##Apply the plan.
 
 ### Notes
 	- Terraform deployments for each environments is handled using workspace. 
+	- Bash scripts under [bin](https://github.com/nidhinnru/ecs-fargate-poc/tree/main/bin) folder is used for ecr authentication and md5 checksum for dockerfile changes.
 	- Script expects [environment variables](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/terraform/locals.tf#L20) to be set in ECS task definition.
 	- This use case doesn't require load balancer, autoscaling to be configured.
 	- ECS task will try to create the bucket, If the bucket already exists it will skip all the steps and task will be stopped. In either case the task will be stopped after the entrypoint execution(this is expected).
