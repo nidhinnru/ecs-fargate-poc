@@ -32,7 +32,7 @@ Manual Execution:
 python ./src/main.py --s3_bucket_name=dev-ingest-test --region=us-east-1
 ```
 
-Alternatively, arguments can also be configured as environment variables, it's expected run the execution as "python [./src/main.py](https://github.com/nidhinnru/ecs-poc-repo/blob/main/src/main.py)" after setting the environment variables.
+Alternatively, arguments can also be configured as environment variables, it's expected run the execution as "python [./src/main.py](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/src/main.py)" after setting the environment variables.
 ```
 S3_BUCKET_NAME=dev-ingest-test
 AWS_REGION=us-east-1
