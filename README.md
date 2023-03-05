@@ -18,15 +18,15 @@
 
 ### S3 Python Script
 
-A Python script has been written to setup S3 bucket, enable AES256 encryption, disable public access.
+A Python script has been created to setup S3 bucket, enable AES256 encryption, disable public access.
 
-Script Logic:
+#### Script Logic:
 	- Allows two input arguments "--s3_bucket_name" & "--region".
         - Check if the bucket already exists, else create a new bucket.
         - Enables AES256 encryption at bucket level.
         - Disable all public access to the bucket.
 
-Manual Execution:
+#### Manual Execution:
 ```sh
 python ./src/main.py --s3_bucket_name=dev-ingest-test --region=us-east-1
 ```
@@ -58,7 +58,7 @@ services:
       - $HOME/aws/credentials:/root/.aws/credentials
 ```
 
-Docker-compose Commands:
+#### Docker-compose Commands:
 ```sh
 docker-compose build --no-cache ##Build docker image
 docker-compose up -d ##Start the container service
@@ -70,7 +70,7 @@ docker-compose down ##To remove all the resources
 
 Terraform modules for ECR & ECS services are placed under [terraform/modules](https://github.com/nidhinnru/ecs-fargate-poc/tree/main/terraform/modules) directory
 
-Terraform Commands:
+#### Terraform Commands:
 ```sh
 terraform init --upgrade ##Initialize the changes
 terraform workspace new dev ##Create new workspace as per env.(e.g dev, beta, & prod)
