@@ -22,9 +22,9 @@ A Python script has been created to setup S3 bucket, enable AES256 encryption, d
 
 #### Script Logic:
 	- Allows two input arguments "--s3_bucket_name" & "--region".
-        - Check if the bucket already exists, else create a new bucket.
-        - Enables AES256 encryption at bucket level.
-        - Disable all public access to the bucket.
+	- Check if the bucket already exists, else create a new bucket.
+	- Enables AES256 encryption at bucket level.
+	- Disable all public access to the bucket.
 
 #### Manual Execution:
 ```sh
