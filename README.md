@@ -70,6 +70,8 @@ docker-compose down ##To remove all the resources
 
 Terraform modules for ECR & ECS services are placed under [terraform/modules](https://github.com/nidhinnru/ecs-fargate-poc/tree/main/terraform/modules) directory
 
+Terraform modules builds docker image and creates IAM Task role, IAM Task Execution role, Security group, ECR repo, ECS Cluster, ECS Service & ECS task definition.  
+
 #### Terraform Commands:
 ```sh
 terraform init --upgrade ##Initialize the changes
@@ -85,4 +87,4 @@ terraform apply ##Apply the plan.
 	- Bash scripts under 'bin' folder is used for ecr authentication and md5 checksum for dockerfile changes.
 	- Script expects [environment variables](https://github.com/nidhinnru/ecs-fargate-poc/blob/main/terraform/locals.tf#L20) to be set in ECS task definition.
 	- This use case doesn't require load balancer, autoscaling to be configured.
-	- ECS task will try to create the bucket, If the bucket already exists it will skip all the steps and task will be stopped. In either case the task will be stopped after the entrypoint execution(this is expected).
+	- ECS task will try to create the bucket, If the bucket already exists it will skip all the steps and task will be stopped. In either case the task will be `stopped after the entrypoint execution(this is expected).
