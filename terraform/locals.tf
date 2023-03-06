@@ -12,7 +12,7 @@ locals {
     prod = [""]
   }
   vpc_ids =  {
-    dev  = "vpc-0e73e596a0d995109"
+    dev  = "vpc-0e09"
     beta = ""
     prod = ""
   }
